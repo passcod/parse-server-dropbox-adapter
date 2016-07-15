@@ -1,0 +1,35 @@
+{
+  "name": "parse-server-dropbox-adapter",
+  "private": "1.0.0",
+  "description": "Dropbox adapter for parse-server",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap 'spec/*.spec.js'",
+    "posttest": "flow check && standard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mckay-software/parse-server-dropbox-adapter.git"
+  },
+  "keywords": [
+    "parse-server",
+    "dropbox"
+  ],
+  "author": "McKay Software",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mckay-software/parse-server-dropbox-adapter/issues"
+  },
+  "homepage": "https://github.com/mckay-software/parse-server-dropbox-adapter#readme",
+  "dependencies": {
+    "dropbox": "^2.0.0",
+    "request": "^2.73.0",
+    "url-join": "^1.1.0"
+  },
+  "devDependencies": {
+    "flow-bin": "^0.28.0",
+    "mz": "^2.4.0",
+    "standard": "^7.1.2",
+    "tap": "^6.1.1"
+  }
+}
