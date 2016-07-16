@@ -19,7 +19,8 @@ filesAdapter: {
   options: {
     token: 'dropbox oauth token',
     prefix: '',
-    publicUrl: (name) => `https://example.com/files/${name}`
+    publicUrl: (prefix, name, join) =>
+      join('https://example.com/files/', `${prefix}${name}`)
   }
 }
 ```
@@ -28,4 +29,4 @@ filesAdapter: {
 |:-------|:-------:|:------------|
 | `token` | **required** ||
 | `prefix` | `''` | A prefix to apply to all filenames. Can be set to e.g. `'/foo/'` to put all files in a subdirectory. A `/` will be prefixed if one isn't there already, unless the string is empty. |
-| `publicUrl` | **required** | A function that takes a filename and returns a string for the public URL of the file. **Or** `false` to disable public URLs. |
+| `publicUrl` | **required** | A function that takes the prefix and a filename and returns a string for the public URL of the file, or `false` to disable public URLs. Third argument is [url-join](https://www.npmjs.com/package/url-join), a `join`-like function for URLs. |

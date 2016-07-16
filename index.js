@@ -49,7 +49,7 @@ class Adapter {
   /* :: dropbox: Dropbox; */
   /* :: token: string; */
   /* :: prefix: string; */
-  /* :: publicUrl: (name: string) => string; */
+  /* :: publicUrl: (prefix: string, name: string, urljoin: Function) => string; */
   /* :: request: Class<request>; */
 
   constructor (options /* : Object */ = {}) {
@@ -174,10 +174,17 @@ class Adapter {
   }
 
   getFileLocation (config /* : Object */, name /* : string */) /* : string */ {
-    const parts = this.publicUrl(name)
-      ? [this.publicUrl(name), `${this.prefix}${name}`]
-      : [config.mount, 'files', config.applicationId, encodeURIComponent(name)]
-    return urljoin(...parts)
+    const url = this.publicUrl(this.prefix, name, urljoin)
+    if (url === false) {
+      return urljoin(
+        config.mount,
+        'files',
+        config.applicationId,
+        encodeURIComponent(name)
+      )
+    } else {
+      return url
+    }
   }
 }
 
