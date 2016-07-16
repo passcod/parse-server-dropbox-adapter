@@ -30,3 +30,11 @@ filesAdapter: {
 | `token` | **required** ||
 | `prefix` | `''` | A prefix to apply to all filenames. Can be set to e.g. `'/foo/'` to put all files in a subdirectory. A `/` will be prefixed if one isn't there already, unless the string is empty. |
 | `publicUrl` | **required** | A function that takes the prefix and a filename and returns a string for the public URL of the file, or `false` to disable public URLs. Third argument is [url-join](https://www.npmjs.com/package/url-join), a `join`-like function for URLs. |
+
+## Test
+
+You need a Dropbox token set as `DROPBOX_TOKEN` in the environment to run
+tests. It is recommended to set this to a dedicated "App Folder Only" token, so
+the tests cannot access anything else and cannot mess up your Dropbox with its
+temporary files. Also, app folders are not synced to your desktop by default,
+so you'll be saving yourself from notifications and wasted bandwidth.
