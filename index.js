@@ -24,15 +24,19 @@ class RateLimited extends Error {
 }
 
 class DropboxError extends Error {
-  /* :: details: Object; */
+  /* :: details: ?Object; */
 
-  constructor (obj /* : string */) {
+  constructor (obj /* : string | Object */) {
     super()
-    try {
-      obj = JSON.parse(obj)
-    } catch (ignoredError) {
-      obj = { error_summary: obj }
+
+    if (typeof obj === 'string') {
+      try {
+        obj = JSON.parse(obj)
+      } catch (ignoredError) {
+        obj = { error_summary: obj, error: null }
+      }
     }
+
     this.message = obj.error_summary
     this.details = obj.error
   }
@@ -40,10 +44,11 @@ class DropboxError extends Error {
 
 class Adapter {
   /* :: static default: Class<Adapter>; */
+  /* :: static DropboxError: Class<DropboxError>; */
 
   /* :: dropbox: Dropbox; */
   /* :: token: string; */
-  /* :: prefix: (name: string) => string; */
+  /* :: prefix: string; */
   /* :: publicUrl: (name: string) => string; */
   /* :: request: Class<request>; */
 
@@ -61,8 +66,8 @@ class Adapter {
 
     Object.assign(this, {
       dropbox: new Dropbox({ accessToken: token }),
-      prefix: typeof prefix === 'function' ? prefix : (name) => prefix,
-      publicUrl: typeof publicUrl === 'function' ? publicUrl : (name) => publicUrl,
+      prefix,
+      publicUrl,
       request: request.defaults({
         baseUrl: 'https://content.dropboxapi.com/2/files/',
         gzip: true,
@@ -86,7 +91,7 @@ class Adapter {
           'Content-Type': 'application/octet-stream',
           'Dropbox-API-Arg': JSON.stringify({
             mode: 'overwrite',
-            path: `${this.prefix(name)}${name}`
+            path: `${this.prefix}${name}`
           })
         }
       }, (err, resp, body) => {
@@ -115,7 +120,7 @@ class Adapter {
 
   deleteFile (name /* : string */) /* : Promise<void> */ {
     return this.dropbox.filesDelete({
-      path: `${this.prefix(name)}${name}`
+      path: `${this.prefix}${name}`
     })
   }
 
@@ -125,7 +130,7 @@ class Adapter {
         url: '/download',
         headers: {
           'Dropbox-API-Arg': JSON.stringify({
-            path: `${this.prefix(name)}${name}`
+            path: `${this.prefix}${name}`
           })
         }
       })
@@ -170,7 +175,7 @@ class Adapter {
 
   getFileLocation (config /* : Object */, name /* : string */) /* : string */ {
     const parts = this.publicUrl(name)
-      ? [this.publicUrl(name), `${this.prefix(name)}${name}`]
+      ? [this.publicUrl(name), `${this.prefix}${name}`]
       : [config.mount, 'files', config.applicationId, encodeURIComponent(name)]
     return urljoin(...parts)
   }
@@ -178,3 +183,4 @@ class Adapter {
 
 module.exports = Adapter
 module.exports.default = Adapter
+module.exports.DropboxError = DropboxError

@@ -27,5 +27,5 @@ filesAdapter: {
 | Option | Default | Description |
 |:-------|:-------:|:------------|
 | `token` | **required** ||
-| `prefix` | `''` | A prefix to apply to all filenames. Can be set to e.g. `'foo/'` to put all files in a subdirectory. This can be a function that takes the filename and returns a string. |
+| `prefix` | `''` | A prefix to apply to all filenames. Can be set to e.g. `'/foo/'` to put all files in a subdirectory. A `/` will be prefixed if one isn't there already, unless the string is empty. |
 | `publicUrl` | **required** | A function that takes a filename and returns a string for the public URL of the file. **Or** `false` to disable public URLs. |
