@@ -1,6 +1,6 @@
 {
   "name": "parse-server-dropbox-adapter",
-  "private": "1.0.0",
+  "version": "1.0.0",
   "description": "Dropbox adapter for parse-server",
   "main": "index.js",
   "scripts": {
