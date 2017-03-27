@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "tap 'spec/*.spec.js'",
-    "posttest": "flow check && standard"
+    "posttest": "standard"
   },
   "repository": {
     "type": "git",
