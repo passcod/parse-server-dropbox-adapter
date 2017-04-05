@@ -29,7 +29,7 @@
   "devDependencies": {
     "flow-bin": "^0.43.0",
     "mz": "^2.4.0",
-    "standard": "^9.0.2",
+    "standard": "^10.0.0",
     "tap": "^10.3.0"
   }
 }
