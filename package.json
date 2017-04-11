@@ -24,7 +24,7 @@
   "dependencies": {
     "dropbox": "^2.0.0",
     "request": "^2.73.0",
-    "url-join": "^1.1.0"
+    "url-join": "^2.0.0"
   },
   "devDependencies": {
     "flow-bin": "^0.43.0",
