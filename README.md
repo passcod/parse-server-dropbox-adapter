@@ -1,5 +1,7 @@
 # Parse Server: Dropbox storage adapter
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/passcod/parse-server-dropbox-adapter.svg?token=d772cb7b8caf410b759799c296031b36f76b51a247b0009c6097822af450c69a&ts=1494892487299)](https://greenkeeper.io/)
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/passcod/parse-server-dropbox-adapter.svg)](https://greenkeeper.io/)
 
 [![npm](https://img.shields.io/npm/v/parse-server-dropbox-adapter.svg?style=flat-square)](https://www.npmjs.com/package/parse-server-dropbox-adapter)
