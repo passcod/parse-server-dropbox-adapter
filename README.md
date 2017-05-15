@@ -1,11 +1,17 @@
 # Parse Server: Dropbox storage adapter
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/mckay-software/parse-server-dropbox-adapter.svg)](https://greenkeeper.io/)
+[![Greenkeeper badge](https://badges.greenkeeper.io/passcod/parse-server-dropbox-adapter.svg)](https://greenkeeper.io/)
 
 [![npm](https://img.shields.io/npm/v/parse-server-dropbox-adapter.svg?style=flat-square)](https://www.npmjs.com/package/parse-server-dropbox-adapter)
-[![Travis](https://img.shields.io/travis/mckay-software/parse-server-dropbox-adapter.svg?style=flat-square)](https://travis-ci.org/mckay-software/parse-server-dropbox-adapter)
-[![Coveralls](https://img.shields.io/coveralls/mckay-software/parse-server-dropbox-adapter.svg?style=flat-square)](https://coveralls.io/github/mckay-software/parse-server-dropbox-adapter)
+[![Travis](https://img.shields.io/travis/passcod/parse-server-dropbox-adapter.svg?style=flat-square)](https://travis-ci.org/passcod/parse-server-dropbox-adapter)
+[![Coveralls](https://img.shields.io/coveralls/passcod/parse-server-dropbox-adapter.svg?style=flat-square)](https://coveralls.io/github/passcod/parse-server-dropbox-adapter)
 [![License](https://img.shields.io/badge/license-ISC-blue.svg?style=flat-square)](https://spdx.org/licenses/ISC.html)
+
+## Notice
+
+This is not maintained. The test-suite passed at the last commit, but no
+further work has been done to it and the CI has been stopped as the Dropbox
+test account was removed. Fork and use at your own risk.
 
 ## Install
 
@@ -32,6 +38,10 @@ filesAdapter: {
 | `token` | **required** ||
 | `prefix` | `''` | A prefix to apply to all filenames. Can be set to e.g. `'/foo/'` to put all files in a subdirectory. A `/` will be prefixed if one isn't there already, unless the string is empty. |
 | `publicUrl` | **required** | A function that takes the prefix and a filename and returns a string for the public URL of the file, or `false` to disable public URLs. Third argument is [url-join](https://www.npmjs.com/package/url-join), a `join`-like function for URLs. |
+
+Note that this module does not handle erasing files, so if you want to
+garbage-collect Parse files that are not being used, you need to do so
+yourself.
 
 ## Test
 
