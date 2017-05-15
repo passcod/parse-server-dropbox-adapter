@@ -1,6 +1,6 @@
 {
   "name": "parse-server-dropbox-adapter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Dropbox adapter for parse-server",
   "main": "index.js",
   "scripts": {
@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mckay-software/parse-server-dropbox-adapter.git"
+    "url": "git+https://github.com/passcod/parse-server-dropbox-adapter.git"
   },
   "keywords": [
     "parse-server",
     "dropbox"
   ],
-  "author": "McKay Software",
+  "author": "Félix Saparelli <felix@passcod.name> (https://passcod.name)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mckay-software/parse-server-dropbox-adapter/issues"
+    "url": "https://github.com/passcod/parse-server-dropbox-adapter/issues"
   },
-  "homepage": "https://github.com/mckay-software/parse-server-dropbox-adapter#readme",
+  "homepage": "https://github.com/passcod/parse-server-dropbox-adapter#readme",
   "dependencies": {
     "dropbox": "^2.0.0",
     "request": "^2.73.0",
